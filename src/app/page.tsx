@@ -49,11 +49,7 @@ export default async function Home() {
 
   return (
     <main>
-      <AnimatedHero
-        eyebrow="Next / GSAP / Prismic / Netlify"
-        heading="Crystal Living"
-        body="A refined starter for a personal brand, studio, or editorial portfolio with content managed in Prismic and deploys wired for Netlify."
-      />
+      <AnimatedHero />
 
       <section id="work" className="px-5 pb-24 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl border-t border-black/10 pt-10">
