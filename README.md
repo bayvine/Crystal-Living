@@ -28,14 +28,14 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
 4. Confirm `prismic.config.json` uses the same `repositoryName`.
-5. Start the site and check the Prismic model status:
+5. Start the site and Slice Machine in separate terminals:
 
 ```bash
 npm run dev
-npm run prismic:status
+npm run slicemachine
 ```
 
-6. Push the custom types and slices with `npm run prismic:push`.
+6. Review and push model changes in Slice Machine. The CLI equivalents are `npm run prismic:status` and `npm run prismic:push`.
 7. In Prismic, create the `Home` singleton and add Hero, Featured Work, and Text Block slices.
 8. Add Prismic preview URL after Netlify deploy:
 

@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "slicemachine": "start-slicemachine",
     "prismic": "prismic",
     "prismic:status": "prismic status",
     "prismic:push": "prismic push",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.6",
     "@netlify/plugin-nextjs": "^5.15.12",
+    "@slicemachine/adapter-next": "^0.3.96",
     "@tailwindcss/postcss": "^4.3.2",
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
@@ -39,6 +41,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.2.10",
     "prismic": "^1.12.2",
+    "slice-machine-ui": "^2.21.3",
     "tailwindcss": "^4.3.2",
     "typescript": "^5.9.3"
   }
