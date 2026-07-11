@@ -2,14 +2,14 @@
   "id": "featured_work",
   "type": "SharedSlice",
   "name": "FeaturedWork",
-  "description": "List of featured work entries.",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Featured work list.",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Featured work list.",
       "primary": {
         "eyebrow": {
           "type": "Text",
@@ -23,8 +23,8 @@
           "config": {
             "label": "Heading",
             "placeholder": "Recent projects with room for story and motion.",
-            "allowTargetBlank": true,
-            "single": "heading2"
+            "single": "heading2",
+            "allowTargetBlank": true
           }
         }
       },
@@ -45,5 +45,6 @@
         }
       }
     }
-  ]
+  ],
+  "description": "List of featured work entries."
 }

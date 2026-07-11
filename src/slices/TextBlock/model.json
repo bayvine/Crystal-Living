@@ -2,14 +2,14 @@
   "id": "text_block",
   "type": "SharedSlice",
   "name": "TextBlock",
-  "description": "Editorial text section.",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Dark text block.",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Dark text block.",
       "primary": {
         "eyebrow": {
           "type": "Text",
@@ -23,12 +23,13 @@
           "config": {
             "label": "Body",
             "placeholder": "A flexible dark editorial section.",
-            "allowTargetBlank": true,
-            "multi": "paragraph,heading2,strong,em,hyperlink"
+            "multi": "paragraph,heading2,strong,em,hyperlink",
+            "allowTargetBlank": true
           }
         }
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Editorial text section."
 }

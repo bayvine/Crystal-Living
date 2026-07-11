@@ -1,12 +1,11 @@
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
-import smConfig from "../slicemachine.config.json";
+import prismicConfig from "../prismic.config.json";
 
 export const repositoryName =
-  process.env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME || smConfig.repositoryName;
+  process.env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME || prismicConfig.repositoryName;
 
-export const hasPrismicRepository =
-  Boolean(repositoryName) && repositoryName !== "your-prismic-repo";
+export const hasPrismicRepository = Boolean(repositoryName);
 
 export const routes: prismic.ClientConfig["routes"] = [
   {

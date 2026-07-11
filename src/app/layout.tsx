@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display } from "next/font/google";
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -50,6 +52,7 @@ export default function RootLayout({
       <body className={playfairDisplay.variable}>
         <div className="grain" aria-hidden="true" />
         {children}
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );

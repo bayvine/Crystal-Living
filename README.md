@@ -27,15 +27,15 @@ PRISMIC_WEBHOOK_SECRET=make-a-long-random-string
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-4. Update `slicemachine.config.json` so `repositoryName` matches the same value.
-5. Start the site and Slice Machine:
+4. Confirm `prismic.config.json` uses the same `repositoryName`.
+5. Start the site and check the Prismic model status:
 
 ```bash
 npm run dev
-npm run slicemachine
+npm run prismic:status
 ```
 
-6. In Slice Machine, connect to the Prismic repository, then push the custom types and slices.
+6. Push the custom types and slices with `npm run prismic:push`.
 7. In Prismic, create the `Home` singleton and add Hero, Featured Work, and Text Block slices.
 8. Add Prismic preview URL after Netlify deploy:
 

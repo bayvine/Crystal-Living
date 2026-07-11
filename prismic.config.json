@@ -1,0 +1,16 @@
+{
+  "repositoryName": "crystal-living",
+  "libraries": [
+    "./src/slices"
+  ],
+  "routes": [
+    {
+      "type": "home",
+      "path": "/"
+    },
+    {
+      "type": "page",
+      "path": "/:uid"
+    }
+  ]
+}

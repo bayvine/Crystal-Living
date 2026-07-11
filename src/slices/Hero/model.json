@@ -2,14 +2,14 @@
   "id": "hero",
   "type": "SharedSlice",
   "name": "Hero",
-  "description": "Large first-screen editorial hero.",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Hero with headline, supporting copy, CTA, and image.",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Hero with headline, supporting copy, CTA, and image.",
       "primary": {
         "eyebrow": {
           "type": "Text",
@@ -23,8 +23,8 @@
           "config": {
             "label": "Heading",
             "placeholder": "Crystal Living",
-            "allowTargetBlank": true,
-            "single": "heading1"
+            "single": "heading1",
+            "allowTargetBlank": true
           }
         },
         "subheading": {
@@ -32,8 +32,8 @@
           "config": {
             "label": "Subheading",
             "placeholder": "Short editorial introduction.",
-            "allowTargetBlank": true,
-            "single": "paragraph"
+            "single": "paragraph",
+            "allowTargetBlank": true
           }
         },
         "cta_label": {
@@ -61,5 +61,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Large first-screen editorial hero."
 }
