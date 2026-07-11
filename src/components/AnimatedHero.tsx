@@ -116,7 +116,7 @@ export default function AnimatedHero() {
       <div className="absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgb(247_243_243/48%)_0%,rgb(247_243_243/20%)_52%,rgb(51_51_51/10%)_100%)]" />
       <div className="absolute inset-y-0 left-0 z-[2] w-[72%] bg-[linear-gradient(90deg,rgb(247_243_243/30%),transparent)] sm:w-[58%]" />
 
-      <header className="absolute inset-x-0 top-0 z-40 h-20 px-5 sm:px-8 lg:px-12">
+      <header className="hero-header absolute inset-x-0 top-0 z-40 h-20 px-5 sm:px-8 lg:px-12">
         <nav className="mx-auto flex h-full max-w-[1440px] items-start justify-between" aria-label="Primary">
           <Link
             href="/"
@@ -128,14 +128,14 @@ export default function AnimatedHero() {
           <a
             href="#work"
             data-hero-reveal
-            className="inline-flex h-12 items-center bg-lavender px-5 text-xs font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-14 sm:px-7"
+            className="hero-nav-cta inline-flex h-12 items-center bg-lavender px-5 text-xs font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-14 sm:px-7"
           >
             Explore the plan
           </a>
         </nav>
       </header>
 
-      <div className="absolute inset-x-5 top-[13%] z-10 mx-auto max-w-[1320px] text-center sm:inset-x-8 sm:top-[12%] lg:inset-x-12">
+      <div className="hero-title-block absolute inset-x-5 top-[13%] z-10 mx-auto max-w-[1320px] text-center sm:inset-x-8 sm:top-[12%] lg:inset-x-12">
         <p
           data-hero-reveal
           className="font-sans text-[0.66rem] font-medium uppercase text-lavender sm:text-xs"
@@ -145,7 +145,7 @@ export default function AnimatedHero() {
         <h1
           id="home-hero-title"
           data-hero-reveal
-          className="mx-auto mt-5 max-w-[1240px] text-[clamp(3.5rem,8.7vw,8.4rem)] font-normal leading-[0.88] text-black sm:mt-7"
+          className="hero-title mx-auto mt-5 max-w-[1240px] font-normal leading-[0.88] text-black sm:mt-7"
         >
           <span className="block">Your first home.</span>
           <span className="block sm:whitespace-nowrap">
@@ -169,25 +169,25 @@ export default function AnimatedHero() {
         />
       </div>
 
-      <div className="absolute bottom-[8%] left-5 z-30 max-w-[290px] sm:bottom-[12%] sm:left-[8%] sm:max-w-xs lg:bottom-[20%] lg:left-[15%]">
-        <p data-hero-reveal className="font-serif text-[1.35rem] leading-[1.12] text-black sm:text-2xl">
+      <div className="hero-copy-block absolute bottom-[8%] left-5 z-30 max-w-[290px] sm:bottom-[12%] sm:left-[8%] sm:max-w-xs lg:bottom-[20%] lg:left-[15%]">
+        <p data-hero-reveal className="hero-copy font-serif text-[1.35rem] leading-[1.12] text-black sm:text-2xl">
           A clear step-by-step process
           <br />
           to help you move forward
           <br />
           with <em className="font-normal text-lavender">confidence</em>
         </p>
-        <div data-hero-reveal className="mt-5 flex flex-col items-start gap-3">
+        <div data-hero-reveal className="hero-actions mt-5 flex flex-col items-start gap-3">
           <a
             href="#work"
-            className="inline-flex h-11 items-center gap-5 bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-12 sm:text-xs"
+            className="hero-primary-action inline-flex h-11 items-center gap-5 bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-12 sm:text-xs"
           >
             Start your home buying plan
             <span aria-hidden="true">{"\u2192"}</span>
           </a>
           <a
             href="#studio"
-            className="inline-flex items-center gap-4 border-b border-white pb-1.5 text-[0.68rem] font-medium uppercase text-white drop-shadow-sm transition-colors hover:border-highlight-lavender hover:text-highlight-lavender sm:text-xs"
+            className="hero-secondary-action inline-flex items-center gap-4 border-b border-white pb-1.5 text-[0.68rem] font-medium uppercase text-white drop-shadow-sm transition-colors hover:border-highlight-lavender hover:text-highlight-lavender sm:text-xs"
           >
             Download the free guide
             <span aria-hidden="true">{"\u2192"}</span>
