@@ -169,7 +169,7 @@ export default function AnimatedHero() {
         />
       </div>
 
-      <div className="absolute bottom-[5%] left-5 z-30 max-w-[290px] sm:bottom-[8%] sm:left-[8%] sm:max-w-xs lg:bottom-[11%] lg:left-[15%]">
+      <div className="absolute bottom-[8%] left-5 z-30 max-w-[290px] sm:bottom-[12%] sm:left-[8%] sm:max-w-xs lg:bottom-[20%] lg:left-[15%]">
         <p data-hero-reveal className="font-serif text-[1.35rem] leading-[1.12] text-black sm:text-2xl">
           A clear step-by-step process
           <br />
