@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-satoshi);
+  --font-serif: var(--font-playfair);
+  --color-black: #333333;
+  --color-lavender: #908cbe;
+  --color-highlight-lavender: #b6affa;
+  --color-cream: #f7f3f3;
+  --color-white: #ffffff;
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-black);
+  --font-satoshi: "Satoshi", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 10%, rgb(182 175 250 / 18%), transparent 30%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-satoshi);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--color-highlight-lavender);
+  color: var(--color-black);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgb(51 51 51 / 11%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(51 51 51 / 9%) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}

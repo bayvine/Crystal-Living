@@ -1,0 +1,49 @@
+{
+  "id": "featured_work",
+  "type": "SharedSlice",
+  "name": "FeaturedWork",
+  "description": "List of featured work entries.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Featured work list.",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Selected work"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Recent projects with room for story and motion.",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Project title",
+            "placeholder": "Residential identity"
+          }
+        },
+        "meta": {
+          "type": "Text",
+          "config": {
+            "label": "Project meta",
+            "placeholder": "Brand system / Web / Launch"
+          }
+        }
+      }
+    }
+  ]
+}
