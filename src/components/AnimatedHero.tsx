@@ -11,6 +11,14 @@ export default function AnimatedHero() {
   const house = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const rootElement = root.current;
+    const backgroundElement = background.current;
+    const houseElement = house.current;
+
+    if (!rootElement || !backgroundElement || !houseElement) {
+      return;
+    }
+
     let handlePointerMove: ((event: PointerEvent) => void) | undefined;
     let handleScroll: (() => void) | undefined;
     let animationFrame = 0;
@@ -30,11 +38,11 @@ export default function AnimatedHero() {
         return;
       }
 
-      const moveBackground = gsap.quickTo(background.current, "xPercent", {
+      const moveBackground = gsap.quickTo(backgroundElement, "xPercent", {
         duration: 1.4,
         ease: "power3.out"
       });
-      const moveHouse = gsap.quickTo(house.current, "xPercent", {
+      const moveHouse = gsap.quickTo(houseElement, "xPercent", {
         duration: 1,
         ease: "power3.out"
       });
@@ -49,18 +57,14 @@ export default function AnimatedHero() {
 
       const updateScrollPosition = () => {
         animationFrame = 0;
-        if (!root.current) {
-          return;
-        }
-
-        const rect = root.current.getBoundingClientRect();
+        const rect = rootElement.getBoundingClientRect();
         const progress = gsap.utils.clamp(0, 1, -rect.top / rect.height);
 
-        gsap.set(background.current, {
+        gsap.set(backgroundElement, {
           yPercent: progress * 7,
           scale: 1 + progress * 0.08
         });
-        gsap.set(house.current, { yPercent: progress * -7 });
+        gsap.set(houseElement, { yPercent: progress * -7 });
       };
 
       handleScroll = () => {
@@ -69,9 +73,11 @@ export default function AnimatedHero() {
         }
       };
 
-      updateScrollPosition();
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    }, root.current);
+      if (!CSS.supports("animation-timeline: scroll()")) {
+        updateScrollPosition();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+      }
+    }, rootElement);
 
     return () => {
       if (handlePointerMove) {
@@ -93,7 +99,10 @@ export default function AnimatedHero() {
       className="relative isolate h-[100vh] overflow-hidden bg-cream supports-[height:100svh]:h-[100svh]"
       aria-labelledby="home-hero-title"
     >
-      <div ref={background} className="absolute -inset-[4%] z-0 will-change-transform">
+      <div
+        ref={background}
+        className="hero-background-parallax absolute -inset-[4%] z-0 will-change-transform"
+      >
         <Image
           src="/uploads/optimized/background.webp"
           alt=""
@@ -147,7 +156,7 @@ export default function AnimatedHero() {
 
       <div
         ref={house}
-        className="absolute bottom-[-1%] right-[-47%] z-20 h-auto w-[145%] will-change-transform sm:right-[-28%] sm:w-[118%] lg:bottom-[-6%] lg:right-[-4%] lg:w-[95%]"
+        className="hero-house-parallax absolute bottom-[-1%] right-[-47%] z-20 h-auto w-[145%] will-change-transform sm:right-[-28%] sm:w-[118%] lg:bottom-[-6%] lg:right-[-4%] lg:w-[95%]"
       >
         <Image
           src="/uploads/optimized/home.webp"
