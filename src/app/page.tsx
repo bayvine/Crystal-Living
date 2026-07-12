@@ -1,27 +1,10 @@
 import { SliceZone } from "@prismicio/react";
 import AnimatedHero from "@/components/AnimatedHero";
+import ScrollStory from "@/components/ScrollStory";
 import { createClient, hasPrismicRepository } from "@/prismicio";
 import { components } from "@/slices";
 
 export const revalidate = 60;
-
-const featuredWork = [
-  {
-    title: "Residential identity",
-    meta: "Brand system / Web / Launch",
-    tone: "Editorial"
-  },
-  {
-    title: "Wellness retreat",
-    meta: "Content model / Motion / Netlify",
-    tone: "Immersive"
-  },
-  {
-    title: "Founder studio",
-    meta: "Prismic slices / Next.js / GSAP",
-    tone: "Personal"
-  }
-];
 
 async function getPrismicHome() {
   if (!hasPrismicRepository) {
@@ -50,37 +33,7 @@ export default async function Home() {
   return (
     <main>
       <AnimatedHero />
-
-      <section id="work" className="px-5 pb-24 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl border-t border-black/10 pt-10">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <p className="font-sans text-xs uppercase tracking-[0.28em] text-lavender">
-                Selected work
-              </p>
-              <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-tight sm:text-5xl">
-                Designed to become a CMS-led portfolio quickly.
-              </h2>
-            </div>
-            <div className="grid gap-4">
-              {featuredWork.map((item) => (
-                <article
-                  key={item.title}
-                  className="grid gap-4 border-b border-black/10 py-6 sm:grid-cols-[1fr_auto] sm:items-end"
-                >
-                  <div>
-                    <p className="font-serif text-2xl font-semibold">{item.title}</p>
-                    <p className="mt-2 text-black/58">{item.meta}</p>
-                  </div>
-                  <span className="font-sans text-xs uppercase tracking-[0.2em] text-black/45">
-                    {item.tone}
-                  </span>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ScrollStory />
 
       <section id="studio" className="bg-black px-5 py-20 text-white sm:px-8 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1fr]">

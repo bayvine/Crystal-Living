@@ -135,25 +135,6 @@ export default function AnimatedHero() {
         </nav>
       </header>
 
-      <div className="hero-title-block absolute inset-x-5 top-[13%] z-10 mx-auto max-w-[1320px] text-center sm:inset-x-8 sm:top-[12%] lg:inset-x-12">
-        <p
-          data-hero-reveal
-          className="font-sans text-[0.66rem] font-medium uppercase text-lavender sm:text-xs"
-        >
-          Guiding first-time buyers in Denver &amp; Aurora
-        </p>
-        <h1
-          id="home-hero-title"
-          data-hero-reveal
-          className="hero-title mx-auto mt-5 max-w-[1240px] font-normal leading-[0.88] text-black sm:mt-7"
-        >
-          <span className="block">Your first home.</span>
-          <span className="block sm:whitespace-nowrap">
-            Your <em className="font-normal text-lavender">next</em> chapter.
-          </span>
-        </h1>
-      </div>
-
       <div
         ref={house}
         className="hero-house-parallax absolute bottom-[-1%] right-[-47%] z-20 h-auto w-[145%] will-change-transform sm:right-[-28%] sm:w-[118%] lg:bottom-[-6%] lg:right-[-4%] lg:w-[95%]"
@@ -169,29 +150,50 @@ export default function AnimatedHero() {
         />
       </div>
 
-      <div className="hero-copy-block absolute bottom-[8%] left-5 z-30 max-w-[290px] sm:bottom-[12%] sm:left-[8%] sm:max-w-xs lg:bottom-[20%] lg:left-[15%]">
-        <p data-hero-reveal className="hero-copy font-serif text-[1.35rem] leading-[1.12] text-black sm:text-2xl">
-          A clear step-by-step process
-          <br />
-          to help you move forward
-          <br />
-          with <em className="font-normal text-lavender">confidence</em>
-        </p>
-        <div data-hero-reveal className="hero-actions mt-5 flex flex-col items-start gap-3">
-          <a
-            href="#work"
-            className="hero-primary-action inline-flex h-11 items-center gap-5 bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-12 sm:text-xs"
+      <div className="hero-content-shell">
+        <div className="hero-title-block absolute inset-x-5 top-[13%] z-10 mx-auto max-w-[1320px] text-center sm:inset-x-8 sm:top-[12%] lg:inset-x-12">
+          <p
+            data-hero-reveal
+            className="font-sans text-[0.66rem] font-medium uppercase text-lavender sm:text-xs"
           >
-            Start your home buying plan
-            <span aria-hidden="true">{"\u2192"}</span>
-          </a>
-          <a
-            href="#studio"
-            className="hero-secondary-action inline-flex items-center gap-4 border-b border-white pb-1.5 text-[0.68rem] font-medium uppercase text-white drop-shadow-sm transition-colors hover:border-highlight-lavender hover:text-highlight-lavender sm:text-xs"
+            Guiding first-time buyers in Denver &amp; Aurora
+          </p>
+          <h1
+            id="home-hero-title"
+            data-hero-reveal
+            className="hero-title mx-auto mt-5 max-w-[1240px] font-normal leading-[0.88] text-black sm:mt-7"
           >
-            Download the free guide
-            <span aria-hidden="true">{"\u2192"}</span>
-          </a>
+            <span className="block">Your first home.</span>
+            <span className="block sm:whitespace-nowrap">
+              Your <em className="font-normal text-lavender">next</em> chapter.
+            </span>
+          </h1>
+        </div>
+
+        <div className="hero-copy-block absolute bottom-[8%] left-5 z-30 max-w-[290px] sm:bottom-[12%] sm:left-[8%] sm:max-w-xs lg:bottom-[20%] lg:left-[15%]">
+          <p data-hero-reveal className="hero-copy font-serif text-[1.35rem] leading-[1.12] text-black sm:text-2xl">
+            A clear step-by-step process
+            <br />
+            to help you move forward
+            <br />
+            with <em className="font-normal text-lavender">confidence</em>
+          </p>
+          <div data-hero-reveal className="hero-actions mt-5 flex flex-col items-start gap-3">
+            <a
+              href="#work"
+              className="hero-primary-action inline-flex h-11 items-center gap-5 bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-12 sm:text-xs"
+            >
+              Start your home buying plan
+              <span aria-hidden="true">{"\u2192"}</span>
+            </a>
+            <a
+              href="#studio"
+              className="hero-secondary-action inline-flex items-center gap-4 border-b border-white pb-1.5 text-[0.68rem] font-medium uppercase text-white drop-shadow-sm transition-colors hover:border-highlight-lavender hover:text-highlight-lavender sm:text-xs"
+            >
+              Download the free guide
+              <span aria-hidden="true">{"\u2192"}</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
