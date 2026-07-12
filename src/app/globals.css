@@ -146,7 +146,7 @@ a {
   top: 50%;
   left: 50%;
   z-index: 2;
-  width: min(38vw, 37rem);
+  width: min(34vw, 33rem);
   translate: -50% -50%;
   text-align: center;
 }
@@ -161,7 +161,7 @@ a {
 .story-heading {
   margin: 0;
   color: var(--color-black);
-  font-size: min(clamp(3rem, 5.4vw, 5.5rem), 12vh);
+  font-size: min(clamp(2.75rem, 4.7vw, 4.8rem), 10.5vh);
   font-weight: 400;
   line-height: 0.98;
 }
@@ -179,10 +179,10 @@ a {
 }
 
 .story-description {
-  width: min(100%, 24rem);
-  margin: clamp(1.35rem, 4vh, 2.75rem) auto 0;
+  width: min(100%, 22rem);
+  margin: clamp(1.2rem, 3.2vh, 2.2rem) auto 0;
   color: var(--color-black);
-  font-size: clamp(0.78rem, 1.05vw, 0.98rem);
+  font-size: clamp(0.76rem, 0.95vw, 0.92rem);
   line-height: 1.45;
 }
 
@@ -190,24 +190,25 @@ a {
   position: absolute;
   top: 50%;
   z-index: 1;
-  width: min(22vw, 42vh, 22rem);
+  width: min(17vw, 32vh, 17rem);
   aspect-ratio: 4 / 4.6;
 }
 
 .story-photo-left {
-  left: clamp(3rem, 8vw, 9rem);
+  left: clamp(3.5rem, 9.5vw, 11rem);
 }
 
 .story-photo-right {
-  right: clamp(3rem, 8vw, 9rem);
+  right: clamp(3.5rem, 9.5vw, 11rem);
 }
 
 .story-photo-reveal {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  border-radius: 0.75rem;
   background: var(--color-cream);
-  box-shadow: 0 1rem 1.5rem rgb(51 51 51 / 8%);
+  box-shadow: 0 0.85rem 1.8rem rgb(51 51 51 / 12%);
 }
 
 .story-photo-left--one {
@@ -276,6 +277,225 @@ a {
   rotate: 45deg;
   border-right: 1px solid var(--color-black);
   border-bottom: 1px solid var(--color-black);
+}
+
+.about-rachel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-cream);
+  background-image: url("/patterns/pattern-bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.about-rachel-content {
+  display: grid;
+  width: min(calc(100% - 4rem), 80rem);
+  flex: 1;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  align-items: center;
+  gap: clamp(4rem, 8vw, 8rem);
+  margin: 0 auto;
+  padding: clamp(5rem, 10vh, 7rem) 0 clamp(4rem, 8vh, 6rem);
+}
+
+.about-rachel-copy {
+  max-width: 29rem;
+}
+
+.about-rachel-eyebrow {
+  margin: 0 0 0.45rem;
+  color: rgb(51 51 51 / 72%);
+  font-size: 0.82rem;
+}
+
+.about-rachel-heading {
+  margin: 0;
+  font-size: clamp(2.7rem, 4.4vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.about-rachel-heading em {
+  color: var(--color-highlight-lavender);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.about-rachel-intro {
+  max-width: 27rem;
+  margin: clamp(1.6rem, 4vh, 2.5rem) 0 0;
+  font-size: clamp(0.88rem, 1.05vw, 1rem);
+  line-height: 1.5;
+}
+
+.about-rachel-identity {
+  margin-top: clamp(1.7rem, 4vh, 2.6rem);
+}
+
+.about-rachel-signature {
+  margin: 0;
+  color: var(--color-lavender);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-style: italic;
+}
+
+.about-rachel-role {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.45rem 0 0;
+  color: rgb(51 51 51 / 72%);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.about-rachel-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.4rem);
+  margin-top: clamp(2rem, 4vh, 2.8rem);
+}
+
+.about-rachel-primary,
+.about-rachel-secondary {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  font-size: 0.74rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.about-rachel-primary {
+  min-width: 14.5rem;
+  border-radius: 0.25rem;
+  background: var(--color-lavender);
+  color: var(--color-white);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.about-rachel-primary:hover {
+  background: var(--color-highlight-lavender);
+  color: var(--color-black);
+}
+
+.about-rachel-secondary {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-black);
+  color: var(--color-black);
+}
+
+.about-rachel-visual {
+  position: relative;
+  width: min(100%, 35rem);
+  justify-self: end;
+}
+
+.about-rachel-portrait {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  aspect-ratio: 1.1 / 0.92;
+  background: #d8d8d8;
+  box-shadow: 0 1.2rem 2.8rem rgb(51 51 51 / 10%);
+}
+
+.about-rachel-portrait img {
+  object-position: center 22%;
+}
+
+.about-rachel-quote {
+  position: absolute;
+  right: -1.5rem;
+  bottom: -2.25rem;
+  width: min(17rem, 48%);
+  margin: 0;
+  border-radius: 0.5rem;
+  background: var(--color-white);
+  padding: 1.5rem;
+  box-shadow: 0 0.8rem 1.8rem rgb(51 51 51 / 14%);
+}
+
+.about-rachel-quote svg {
+  color: var(--color-lavender);
+  fill: var(--color-lavender);
+}
+
+.about-rachel-quote p {
+  margin: 0.35rem 0 0;
+  font-size: 0.83rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.about-benefits {
+  width: min(calc(100% - 4rem), 80rem);
+  margin: 0 auto clamp(2rem, 5vh, 3.5rem);
+  overflow: hidden;
+  border-top: 1px solid rgb(51 51 51 / 12%);
+}
+
+.about-benefit-group {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.about-benefit-group--duplicate {
+  display: none;
+}
+
+.about-benefit {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 3.1rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+  padding: 2rem 1.25rem;
+  border-right: 1px solid rgb(51 51 51 / 8%);
+}
+
+.about-benefit:last-child {
+  border-right: 0;
+}
+
+.about-benefit-icon {
+  display: grid;
+  width: 3.1rem;
+  height: 3.1rem;
+  place-items: center;
+  border: 1px solid var(--color-lavender);
+  border-radius: 50%;
+  color: var(--color-lavender);
+}
+
+.about-benefit h3 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-satoshi);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.about-benefit p {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+@keyframes about-benefits-marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (min-width: 640px) {
@@ -353,6 +573,90 @@ a {
 
   .story-scroll-cue {
     bottom: max(0.75rem, 2.5svh);
+  }
+
+  .about-rachel-content {
+    display: flex;
+    width: calc(100% - 2.5rem);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.4rem;
+    padding: 4.5rem 0 3rem;
+  }
+
+  .about-rachel-copy {
+    max-width: none;
+  }
+
+  .about-rachel-heading {
+    font-size: clamp(2.45rem, 11.5vw, 3.25rem);
+  }
+
+  .about-rachel-intro {
+    margin-top: 1.5rem;
+  }
+
+  .about-rachel-role {
+    flex-wrap: wrap;
+  }
+
+  .about-rachel-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .about-rachel-primary,
+  .about-rachel-secondary {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 1.25rem;
+  }
+
+  .about-rachel-visual {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-self: auto;
+  }
+
+  .about-rachel-portrait {
+    aspect-ratio: 4 / 4.5;
+  }
+
+  .about-rachel-quote {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .about-benefits {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-benefits-track {
+    display: flex;
+    width: max-content;
+    animation: about-benefits-marquee 26s linear infinite;
+    will-change: transform;
+  }
+
+  .about-benefit-group,
+  .about-benefit-group--duplicate {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .about-benefit {
+    width: 18rem;
+    flex: 0 0 18rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .about-benefit:last-child {
+    border-right: 1px solid rgb(51 51 51 / 8%);
   }
 }
 
@@ -516,6 +820,19 @@ a {
   }
 
   .story-scroll-cue {
+    display: none;
+  }
+
+  .about-benefits {
+    overflow-x: auto;
+  }
+
+  .about-benefits-track {
+    animation: none;
+    transform: none;
+  }
+
+  .about-benefit-group--duplicate {
     display: none;
   }
 }
