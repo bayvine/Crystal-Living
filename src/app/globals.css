@@ -259,6 +259,7 @@ a {
   height: 1.18rem;
   border: 1px solid var(--color-black);
   border-radius: 0.5rem;
+  animation: story-mouse-pulse 2.4s ease-in-out infinite;
 }
 
 .story-mouse span {
@@ -269,6 +270,7 @@ a {
   height: 0.25rem;
   translate: -50% 0;
   background: var(--color-black);
+  animation: story-wheel-travel 2.4s ease-in-out infinite;
 }
 
 .story-chevron {
@@ -277,6 +279,53 @@ a {
   rotate: 45deg;
   border-right: 1px solid var(--color-black);
   border-bottom: 1px solid var(--color-black);
+  animation: story-chevron-dip 2.4s ease-in-out infinite;
+}
+
+@keyframes story-mouse-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes story-wheel-travel {
+  0% {
+    translate: -50% 0;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.72;
+  }
+
+  68% {
+    translate: -50% 0.18rem;
+    opacity: 0;
+  }
+
+  100% {
+    translate: -50% 0.18rem;
+    opacity: 0;
+  }
+}
+
+@keyframes story-chevron-dip {
+  0%,
+  30%,
+  100% {
+    translate: 0 -0.02rem;
+    opacity: 0.48;
+  }
+
+  62% {
+    translate: 0 0.04rem;
+    opacity: 0.72;
+  }
 }
 
 .about-rachel {
@@ -495,6 +544,232 @@ a {
 @keyframes about-benefits-marquee {
   to {
     transform: translateX(-50%);
+  }
+}
+
+.approach-journey {
+  --approach-copy-width: 58vw;
+  --approach-image-width: 34vw;
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.approach-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.approach-panel {
+  width: calc(var(--approach-copy-width) + var(--approach-image-width));
+  height: 100%;
+  flex: 0 0 calc(var(--approach-copy-width) + var(--approach-image-width));
+  overflow: hidden;
+}
+
+.approach-panel--featured {
+  width: 100vw;
+  flex-basis: 100vw;
+}
+
+.approach-featured-layout,
+.approach-panel-layout {
+  height: 100%;
+  padding-block: clamp(4.5rem, 10vh, 7rem);
+}
+
+.approach-featured-layout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 0.95fr) minmax(12rem, 0.58fr) var(--approach-image-width);
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+  padding-left: max(2rem, calc((100vw - 86rem) / 2));
+}
+
+.approach-eyebrow,
+.approach-number {
+  margin: 0;
+  color: rgb(51 51 51 / 64%);
+  font-size: 0.72rem;
+}
+
+.approach-featured-title {
+  margin: 0.65rem 0 0;
+  font-size: min(clamp(2.7rem, 3.6vw, 3.8rem), 9.5vh);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.approach-featured-title em {
+  display: block;
+  margin-top: 0.22em;
+  color: var(--color-highlight-lavender);
+  font-weight: 400;
+}
+
+.approach-featured-copy {
+  align-self: center;
+}
+
+.approach-featured-copy p,
+.approach-description {
+  margin: 0;
+  font-size: clamp(0.8rem, 1vw, 0.94rem);
+  line-height: 1.5;
+}
+
+.approach-featured-copy a {
+  display: inline-flex;
+  min-width: 9.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  border-bottom: 1px solid var(--color-black);
+  padding-bottom: 0.45rem;
+  color: var(--color-black);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.approach-media {
+  position: relative;
+  width: 100%;
+  height: min(68vh, 42rem);
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--color-cream);
+}
+
+.approach-media--featured {
+  width: 100%;
+  height: min(68vh, 42rem);
+}
+
+.approach-panel-layout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: var(--approach-copy-width) var(--approach-image-width);
+  align-items: center;
+}
+
+.approach-panel-copy {
+  width: min(70%, 36rem);
+  margin: 0 auto;
+}
+
+.approach-number {
+  margin-bottom: clamp(2rem, 6vh, 4rem);
+  color: var(--color-lavender);
+}
+
+.approach-panel-copy .approach-eyebrow {
+  margin-bottom: 0.65rem;
+}
+
+.approach-panel-copy h2 {
+  margin: 0;
+  font-size: min(clamp(3rem, 5vw, 5rem), 12vh);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.approach-description {
+  max-width: 24rem;
+  margin-top: clamp(1.4rem, 4vh, 2.5rem);
+}
+
+.approach-progress {
+  position: absolute;
+  right: 2rem;
+  bottom: 1.5rem;
+  left: 2rem;
+  z-index: 3;
+  height: 1px;
+  overflow: hidden;
+  background: rgb(51 51 51 / 12%);
+}
+
+.approach-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--color-lavender);
+}
+
+@media (max-width: 1023px) {
+  .approach-journey {
+    height: auto;
+    overflow: visible;
+  }
+
+  .approach-track {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .approach-panel {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+
+  .approach-featured-layout,
+  .approach-panel-layout {
+    display: flex;
+    width: calc(100% - 2.5rem);
+    height: auto;
+    min-height: 100svh;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding-left: 0;
+    padding-block: 4.5rem;
+  }
+
+  .approach-featured-title,
+  .approach-panel-copy h2 {
+    font-size: clamp(2.75rem, 12vw, 3.5rem);
+  }
+
+  .approach-featured-copy {
+    align-self: stretch;
+  }
+
+  .approach-featured-copy a {
+    margin-top: 1.75rem;
+  }
+
+  .approach-media,
+  .approach-media--featured {
+    order: 2;
+    width: calc(100% + 2.5rem);
+    height: auto;
+    margin-inline: -1.25rem;
+    aspect-ratio: 4 / 3.5;
+  }
+
+  .approach-panel-copy {
+    max-width: none;
+  }
+
+  .approach-number {
+    margin-bottom: 1.5rem;
+  }
+
+  .approach-progress {
+    display: none;
   }
 }
 
@@ -833,6 +1108,52 @@ a {
   }
 
   .about-benefit-group--duplicate {
+    display: none;
+  }
+
+  .approach-journey {
+    height: auto;
+    overflow: visible;
+  }
+
+  .approach-track {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .approach-panel {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+
+  .approach-featured-layout,
+  .approach-panel-layout {
+    display: flex;
+    width: calc(100% - 2.5rem);
+    height: auto;
+    min-height: 100svh;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding-left: 0;
+    padding-block: 4.5rem;
+  }
+
+  .approach-media,
+  .approach-media--featured {
+    order: 2;
+    width: calc(100% + 2.5rem);
+    height: auto;
+    margin-inline: -1.25rem;
+    aspect-ratio: 4 / 3.5;
+  }
+
+  .approach-progress {
     display: none;
   }
 }

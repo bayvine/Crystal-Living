@@ -162,7 +162,7 @@ export default function AboutRachel() {
           </div>
 
           <div className="about-rachel-actions" data-about-copy>
-            <a href="#work" className="about-rachel-primary">
+            <a href="#approach" className="about-rachel-primary">
               Start your home plan
               <ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" />
             </a>
