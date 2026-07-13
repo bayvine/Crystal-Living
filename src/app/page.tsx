@@ -2,6 +2,7 @@ import { SliceZone } from "@prismicio/react";
 import AboutRachel from "@/components/AboutRachel";
 import AnimatedHero from "@/components/AnimatedHero";
 import ApproachJourney from "@/components/ApproachJourney";
+import ResultsPop from "@/components/ResultsPop";
 import ScrollStory from "@/components/ScrollStory";
 import { createClient, hasPrismicRepository } from "@/prismicio";
 import { components } from "@/slices";
@@ -38,6 +39,7 @@ export default async function Home() {
       <ScrollStory />
       <AboutRachel />
       <ApproachJourney />
+      <ResultsPop />
     </main>
   );
 }

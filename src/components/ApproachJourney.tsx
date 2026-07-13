@@ -24,7 +24,7 @@ const chapters = [
     featured: true
   },
   {
-    number: "01",
+    number: "(01)",
     eyebrow: "A clearer process",
     title: "Clarity at every step.",
     description:
@@ -34,7 +34,7 @@ const chapters = [
     imagePosition: "center"
   },
   {
-    number: "02",
+    number: "(02)",
     eyebrow: "Built around you",
     title: "A strategy shaped around your life.",
     description:
@@ -44,7 +44,7 @@ const chapters = [
     imagePosition: "center"
   },
   {
-    number: "03",
+    number: "(03)",
     eyebrow: "Guidance without pressure",
     title: "Confident decisions, not pressure.",
     description:
@@ -54,7 +54,7 @@ const chapters = [
     imagePosition: "center"
   },
   {
-    number: "04",
+    number: "(04)",
     eyebrow: "Here after the keys",
     title: "Support beyond the closing table.",
     description:
@@ -311,7 +311,7 @@ export default function ApproachJourney() {
             ) : (
               <div className="approach-panel-layout">
                 <div className="approach-panel-copy">
-                  <p className="approach-number" data-approach-reveal>
+                  <p className="approach-number italic" data-approach-reveal>
                     {chapter.number}
                   </p>
                   <p className="approach-eyebrow" data-approach-reveal>
