@@ -2,15 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import ContentContainer from "@/components/ui/ContentContainer";
+
+const navigationLinks = [
+  { label: "About", href: "#studio" },
+  { label: "Home buyer’s guide", href: "#buyer-guide" },
+  { label: "Blog", href: "#client-stories" },
+  { label: "FAQ", href: "#faq" }
+] as const;
 
 export default function AnimatedHero() {
   const root = useRef<HTMLElement>(null);
   const background = useRef<HTMLDivElement>(null);
   const house = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const rootElement = root.current;
     const backgroundElement = background.current;
     const houseElement = house.current;
@@ -26,17 +34,25 @@ export default function AnimatedHero() {
     const ctx = gsap.context(() => {
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      gsap.from("[data-hero-reveal]", {
-        y: 28,
-        opacity: 0,
-        duration: reducedMotion ? 0.01 : 1,
-        stagger: reducedMotion ? 0 : 0.1,
-        ease: "power3.out"
-      });
-
       if (reducedMotion) {
         return;
       }
+
+      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      intro
+        .from(backgroundElement, {
+          autoAlpha: 0,
+          scale: 1.045,
+          duration: 1.35,
+          ease: "power2.out"
+        })
+        .from(houseElement, { autoAlpha: 0, yPercent: 5, duration: 1.15 }, 0.12)
+        .from("[data-hero-nav]", { autoAlpha: 0, y: -14, duration: 0.72, stagger: 0.07 }, 0.18)
+        .from("[data-hero-kicker]", { autoAlpha: 0, y: 14, duration: 0.65 }, 0.34)
+        .from("[data-hero-line]", { yPercent: 112, duration: 0.9, stagger: 0.12, ease: "power4.out" }, 0.4)
+        .from("[data-hero-copy]", { autoAlpha: 0, y: 18, duration: 0.72 }, 0.72)
+        .from("[data-hero-actions] > a", { autoAlpha: 0, y: 12, duration: 0.62, stagger: 0.09 }, 0.82);
 
       const moveBackground = gsap.quickTo(backgroundElement, "xPercent", {
         duration: 1.4,
@@ -48,7 +64,12 @@ export default function AnimatedHero() {
       });
 
       handlePointerMove = (event: PointerEvent) => {
-        const offset = event.clientX / window.innerWidth - 0.5;
+        const rect = rootElement.getBoundingClientRect();
+        const offset = gsap.utils.clamp(
+          -0.5,
+          0.5,
+          (event.clientX - rect.left) / rect.width - 0.5
+        );
         moveBackground(offset * -1.5);
         moveHouse(offset * 2.4);
       };
@@ -101,7 +122,8 @@ export default function AnimatedHero() {
     >
       <div
         ref={background}
-        className="hero-background-parallax absolute -inset-[4%] z-0 will-change-transform"
+        className="absolute -inset-[4%] z-0 will-change-transform"
+        data-hero-background
       >
         <Image
           src="/uploads/optimized/background.webp"
@@ -109,35 +131,48 @@ export default function AnimatedHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[58%_center] sm:object-center"
         />
       </div>
 
       <div className="absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgb(247_243_243/48%)_0%,rgb(247_243_243/20%)_52%,rgb(51_51_51/10%)_100%)]" />
       <div className="absolute inset-y-0 left-0 z-[2] w-[72%] bg-[linear-gradient(90deg,rgb(247_243_243/30%),transparent)] sm:w-[58%]" />
 
-      <header className="hero-header absolute inset-x-0 top-0 z-40 h-20 px-5 sm:px-8 lg:px-12">
-        <nav className="mx-auto flex h-full max-w-[1440px] items-start justify-between" aria-label="Primary">
+      <header className="absolute inset-x-0 top-0 z-40 h-20 lg:h-24 [@media(max-height:700px)]:h-16 [@media(orientation:landscape)_and_(max-height:500px)]:h-12">
+        <ContentContainer size="wide" className="h-full">
+        <nav className="flex h-full items-start justify-between" aria-label="Primary">
           <Link
             href="/"
-            data-hero-reveal
-            className="pt-6 font-serif text-lg font-semibold text-black sm:text-xl"
+            data-hero-nav
+            className="pt-6 font-serif text-[0.82rem] font-medium uppercase sm:pt-8"
           >
             Crystal Living
           </Link>
-          <a
-            href="#work"
-            data-hero-reveal
-            className="hero-nav-cta inline-flex h-12 items-center bg-lavender px-5 text-xs font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-14 sm:px-7"
-          >
-            Explore the plan
-          </a>
+          <div className="flex items-start gap-10">
+            <div className="hidden items-center gap-8 pt-8 lg:flex" data-hero-nav>
+              {navigationLinks.map((link) => (
+                <a className="text-[0.7rem] font-medium uppercase text-black transition-colors hover:text-lavender" href={link.href} key={link.label}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            <a
+              href="#contact"
+              data-hero-nav
+              className="inline-flex h-12 items-center gap-6 rounded-[0.22rem] bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-14 sm:px-7 [@media(orientation:landscape)_and_(max-height:500px)]:h-12"
+            >
+              Schedule free intro
+              <span aria-hidden="true">{"\u2192"}</span>
+            </a>
+          </div>
         </nav>
+        </ContentContainer>
       </header>
 
       <div
         ref={house}
-        className="hero-house-parallax absolute bottom-[-1%] right-[-47%] z-20 h-auto w-[145%] will-change-transform sm:right-[-28%] sm:w-[118%] lg:bottom-[-6%] lg:right-[-4%] lg:w-[95%]"
+        className="absolute bottom-[-1%] right-[-55%] z-[5] h-auto w-[165%] will-change-transform sm:right-[-28%] sm:z-20 sm:w-[118%] lg:bottom-[-6%] lg:right-[-4%] lg:w-[95%] lg:[@media(max-height:700px)]:w-[min(95%,150vh)] min-[1980px]:right-[-1%] min-[1980px]:w-[min(68%,135vh)] [@media(orientation:landscape)_and_(max-height:500px)]:right-[-5%] [@media(orientation:landscape)_and_(max-height:500px)]:bottom-[-3%] [@media(orientation:landscape)_and_(max-height:500px)]:w-[min(118%,130vh)]"
+        data-hero-house
       >
         <Image
           src="/uploads/optimized/home.webp"
@@ -145,50 +180,53 @@ export default function AnimatedHero() {
           width={1534}
           height={862}
           priority
-          sizes="(min-width: 1024px) 95vw, (min-width: 640px) 118vw, 145vw"
+          sizes="(min-width: 1980px) min(68vw, 135vh), (min-width: 1024px) 95vw, (min-width: 640px) 118vw, 165vw"
           className="h-auto w-full"
         />
       </div>
 
-      <div className="hero-content-shell">
-        <div className="hero-title-block absolute inset-x-5 top-[13%] z-10 mx-auto max-w-[1320px] text-center sm:inset-x-8 sm:top-[12%] lg:inset-x-12">
+      <div className="absolute top-[48%] right-4 left-4 z-30 flex -translate-y-1/2 flex-col items-center text-center sm:contents sm:transform-none">
+        <ContentContainer size="wide" className="z-10 max-sm:w-full text-center sm:absolute sm:top-[18%] sm:left-1/2 sm:-translate-x-1/2 [@media(orientation:landscape)_and_(max-height:500px)]:top-14">
           <p
-            data-hero-reveal
+            data-hero-kicker
             className="font-sans text-[0.66rem] font-medium uppercase text-lavender sm:text-xs"
           >
             Guiding first-time buyers in Denver &amp; Aurora
           </p>
           <h1
             id="home-hero-title"
-            data-hero-reveal
-            className="hero-title mx-auto mt-5 max-w-[1240px] font-normal leading-[0.88] text-black sm:mt-7"
+            className="mx-auto mt-5 font-serif text-[clamp(2.45rem,11.5vw,3.4rem)] leading-[0.92] font-normal text-black sm:mt-7 sm:text-[min(clamp(4rem,8.7vw,8.4rem),15vh)] max-sm:[@media(max-height:620px)]:text-[2.35rem] [@media(orientation:landscape)_and_(max-height:500px)]:mt-3 [@media(orientation:landscape)_and_(max-height:500px)]:text-[14vh]"
           >
-            <span className="block">Your first home.</span>
-            <span className="block sm:whitespace-nowrap">
-              Your <em className="font-normal text-lavender">next</em> chapter.
+            <span className="block overflow-hidden pb-[0.08em]">
+              <span className="block whitespace-nowrap" data-hero-line>Your first home.</span>
+            </span>
+            <span className="block overflow-hidden pb-[0.08em]">
+              <span className="block sm:whitespace-nowrap" data-hero-line>
+                Your <em className="font-normal text-lavender">next</em> chapter.
+              </span>
             </span>
           </h1>
-        </div>
+        </ContentContainer>
 
-        <div className="hero-copy-block absolute bottom-[8%] left-5 z-30 max-w-[290px] sm:bottom-[12%] sm:left-[8%] sm:max-w-xs lg:bottom-[20%] lg:left-[15%]">
-          <p data-hero-reveal className="hero-copy font-serif text-[1.35rem] leading-[1.12] text-black sm:text-2xl">
+        <div className="z-30 mt-[clamp(1.5rem,4svh,2.25rem)] w-full max-w-[20rem] sm:absolute sm:bottom-[12%] sm:left-[max(2rem,calc((100%-87rem)/2))] sm:mt-0 sm:max-w-xs sm:text-left lg:bottom-[17%] lg:[@media(max-height:700px)]:bottom-[14%] [@media(orientation:landscape)_and_(max-height:500px)]:bottom-[4%] [@media(orientation:landscape)_and_(max-height:500px)]:left-[max(2rem,calc((100%-87rem)/2))] [@media(orientation:landscape)_and_(max-height:500px)]:max-w-[260px]">
+          <p data-hero-copy className="font-serif text-[clamp(1.05rem,5vw,1.35rem)] leading-[1.12] text-black sm:text-2xl [@media(orientation:landscape)_and_(max-height:500px)]:text-[1.1rem] [@media(orientation:landscape)_and_(max-height:500px)]:leading-[1.05]">
             A clear step-by-step process
             <br />
             to help you move forward
             <br />
             with <em className="font-normal text-lavender">confidence</em>
           </p>
-          <div data-hero-reveal className="hero-actions mt-5 flex flex-col items-start gap-3">
+          <div data-hero-actions className="mt-5 flex flex-col items-center gap-3 sm:items-start [@media(orientation:landscape)_and_(max-height:500px)]:mt-3 [@media(orientation:landscape)_and_(max-height:500px)]:gap-2">
             <a
               href="#work"
-              className="hero-primary-action inline-flex h-11 items-center gap-5 bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-12 sm:text-xs"
+              className="inline-flex h-11 items-center gap-5 rounded-[0.22rem] bg-lavender px-5 text-[0.68rem] font-medium uppercase text-white transition-colors hover:bg-highlight-lavender hover:text-black sm:h-12 sm:text-xs [@media(orientation:landscape)_and_(max-height:500px)]:h-10 [@media(orientation:landscape)_and_(max-height:500px)]:px-4 [@media(orientation:landscape)_and_(max-height:500px)]:text-[0.625rem]"
             >
               Start your home buying plan
               <span aria-hidden="true">{"\u2192"}</span>
             </a>
             <a
               href="#studio"
-              className="hero-secondary-action inline-flex items-center gap-4 border-b border-white pb-1.5 text-[0.68rem] font-medium uppercase text-white drop-shadow-sm transition-colors hover:border-highlight-lavender hover:text-highlight-lavender sm:text-xs"
+              className="inline-flex items-center gap-4 border-b border-white pb-1.5 text-[0.68rem] font-medium uppercase text-white drop-shadow-sm transition-colors hover:border-highlight-lavender hover:text-highlight-lavender sm:text-xs [@media(orientation:landscape)_and_(max-height:500px)]:text-[0.625rem]"
             >
               Download the free guide
               <span aria-hidden="true">{"\u2192"}</span>

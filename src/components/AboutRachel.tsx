@@ -27,20 +27,25 @@ const benefits = [
   }
 ];
 
+const benefitGroupClasses = {
+  primary: "grid grid-cols-4 max-sm:flex max-sm:shrink-0",
+  duplicate: "hidden max-sm:flex max-sm:shrink-0 motion-reduce:hidden"
+} as const;
+
 function BenefitGroup({ duplicate = false }: { duplicate?: boolean }) {
   return (
     <div
-      className={`about-benefit-group ${duplicate ? "about-benefit-group--duplicate" : ""}`}
+      className={benefitGroupClasses[duplicate ? "duplicate" : "primary"]}
       aria-hidden={duplicate ? true : undefined}
     >
       {benefits.map((benefit) => (
-        <article className="about-benefit" key={benefit.title}>
-          <span className="about-benefit-icon" aria-hidden="true">
+        <article className="grid min-w-0 grid-cols-[3.1rem_minmax(0,1fr)] items-center gap-[0.9rem] border-r border-black/10 px-5 py-8 last:border-r-0 max-sm:w-72 max-sm:shrink-0 max-sm:px-5 max-sm:py-6 max-sm:last:border-r" key={benefit.title}>
+          <span className="grid h-[3.1rem] w-[3.1rem] place-items-center rounded-full border border-lavender text-lavender" aria-hidden="true">
             <House size={22} strokeWidth={1.5} />
           </span>
           <div>
-            <h3>{benefit.title}</h3>
-            <p>{benefit.description}</p>
+            <h3 className="mb-1 font-sans text-[0.72rem] font-bold uppercase">{benefit.title}</h3>
+            <p className="text-[0.74rem] leading-[1.4]">{benefit.description}</p>
           </div>
         </article>
       ))}
@@ -134,59 +139,59 @@ export default function AboutRachel() {
     <section
       ref={section}
       id="studio"
-      className="about-rachel"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-cream bg-[url('/patterns/pattern-bg.png')] bg-cover bg-center"
       aria-labelledby="about-rachel-title"
     >
-      <div className="about-rachel-content">
-        <div className="about-rachel-copy">
-          <p className="about-rachel-eyebrow" data-about-copy>
+      <div className="mx-auto grid w-[min(calc(100%-clamp(2.5rem,20vw,21.25rem)),87rem)] flex-1 grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] items-center gap-[clamp(4rem,12vw,12rem)] py-[clamp(5rem,10vh,7rem)] pb-[clamp(4rem,8vh,6rem)] max-sm:flex max-sm:w-[calc(100%-2.5rem)] max-sm:flex-col max-sm:items-stretch max-sm:gap-[2.4rem] max-sm:py-[4.5rem] max-sm:pb-12">
+        <div className="max-w-[29rem] max-sm:max-w-none">
+          <p className="mb-[0.45rem] text-[0.82rem] text-black/70" data-about-copy>
             I get it.
           </p>
-          <h2 id="about-rachel-title" className="about-rachel-heading" data-about-copy>
+          <h2 id="about-rachel-title" className="font-serif text-[clamp(2.25rem,2.1vw,2.5rem)] leading-[1.02] font-normal max-sm:text-[clamp(2.45rem,11.5vw,3.25rem)]" data-about-copy>
             I understand,
             <br />
-            and I’m here <em>for you.</em>
+            and I’m here <em className="font-normal whitespace-nowrap text-highlight-lavender">for you.</em>
           </h2>
 
-          <p className="about-rachel-intro" data-about-copy>
+          <p className="mt-[clamp(1.6rem,4vh,2.5rem)] max-w-[27rem] text-[clamp(0.88rem,1.05vw,1rem)] leading-[1.5] max-sm:mt-6" data-about-copy>
             Buying your first home is more than a transaction. It’s a life-changing transition.
             I’ve been there, and I’m here to guide you with clarity, strategy, and genuine support
             every step of the way.
           </p>
 
-          <div className="about-rachel-identity" data-about-copy>
-            <p className="about-rachel-signature">Rachel Osborne</p>
-            <p className="about-rachel-role">
+          <div className="mt-[clamp(1.7rem,4vh,2.6rem)]" data-about-copy>
+            <p className="font-serif text-[clamp(1.5rem,2.2vw,2rem)] text-lavender italic">Rachel Osborne</p>
+            <p className="mt-[0.45rem] flex items-center gap-3 text-[0.76rem] text-black/70 uppercase max-sm:flex-wrap">
               Founder <span aria-hidden="true">•</span> Denver real estate expert
             </p>
           </div>
 
-          <div className="about-rachel-actions" data-about-copy>
-            <a href="#approach" className="about-rachel-primary">
+          <div className="mt-[clamp(2rem,4vh,2.8rem)] flex items-center gap-[clamp(1.5rem,3vw,2.4rem)] max-sm:mt-8 max-sm:flex-col max-sm:items-stretch max-sm:gap-4" data-about-copy>
+            <a href="#approach" className="inline-flex min-h-[2.9rem] min-w-[14.5rem] items-center justify-center gap-5 rounded bg-lavender text-[0.74rem] font-medium text-white uppercase transition-colors hover:bg-highlight-lavender hover:text-black max-sm:w-full max-sm:min-w-0 max-sm:px-5">
               Start your home plan
               <ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" />
             </a>
-            <a href="#home-hero-title" className="about-rachel-secondary">
+            <a href="#home-hero-title" className="inline-flex min-h-[2.9rem] items-center justify-between gap-5 border-b border-black text-[0.74rem] font-medium text-black uppercase max-sm:w-full max-sm:px-5">
               Meet Rachel
               <ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" />
             </a>
           </div>
         </div>
 
-        <div className="about-rachel-visual">
-          <div className="about-rachel-portrait" data-about-portrait>
+        <div className="relative w-[min(100%,41rem)] justify-self-end max-sm:flex max-sm:w-full max-sm:flex-col">
+          <div className="relative aspect-[1.1/0.92] w-full overflow-hidden rounded-xl bg-[#d8d8d8] shadow-[0_1.2rem_2.8rem_rgb(51_51_51/10%)] max-sm:aspect-[4/4.5]" data-about-portrait>
             <Image
               src="/uploads/about/rachel-portrait.webp"
               alt="A real estate professional wearing a black suit"
               fill
               sizes="(max-width: 767px) calc(100vw - 40px), 48vw"
-              className="object-cover"
+              className="object-cover object-[center_22%]"
             />
           </div>
 
-          <blockquote className="about-rachel-quote" data-about-quote>
-            <Quote size={26} strokeWidth={1.4} aria-hidden="true" />
-            <p>
+          <blockquote className="absolute -right-6 -bottom-9 w-[min(17rem,48%)] rounded-lg bg-white p-6 shadow-[0_0.8rem_1.8rem_rgb(51_51_51/14%)] max-sm:static max-sm:mt-4 max-sm:w-full" data-about-quote>
+            <Quote className="fill-lavender text-lavender" size={26} strokeWidth={1.4} aria-hidden="true" />
+            <p className="mt-[0.35rem] text-[0.83rem] leading-[1.45] italic">
               My goal is simple:
               <br />
               To remove the overwhelm and help you make confident decisions that shape your
@@ -196,8 +201,8 @@ export default function AboutRachel() {
         </div>
       </div>
 
-      <div className="about-benefits" aria-label="Client benefits" data-about-benefits>
-        <div className="about-benefits-track">
+      <div className="mx-auto mb-[clamp(2rem,5vh,3.5rem)] w-[min(calc(100%-clamp(2.5rem,20vw,21.25rem)),87rem)] overflow-hidden border-t border-black/10 max-sm:mb-6 max-sm:w-full motion-reduce:overflow-x-auto" aria-label="Client benefits" data-about-benefits>
+        <div className="max-sm:flex max-sm:w-max max-sm:animate-[about-benefits-marquee_26s_linear_infinite] max-sm:will-change-transform motion-reduce:animate-none motion-reduce:transform-none">
           <BenefitGroup />
           <BenefitGroup duplicate />
         </div>

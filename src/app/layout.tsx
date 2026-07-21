@@ -51,7 +51,6 @@ export default function RootLayout({
         />
       </head>
       <body className={playfairDisplay.variable}>
-        <div className="grain" aria-hidden="true" />
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
